@@ -1,10 +1,11 @@
 import React from 'react';
 import './App.css';
+import Story from './components/Story';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-      <Game />
+      <Story />
     </div>
   );
 }

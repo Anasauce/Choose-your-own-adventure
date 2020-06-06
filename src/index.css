@@ -1,3 +1,8 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
 @font-face {
   font-family: 'mono-black';
   src: local('MonoBlack'), url(./fonts/mono-black.otf) format('opentype');
