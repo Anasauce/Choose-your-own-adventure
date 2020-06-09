@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { storyData } from '../data/storyData';
 import Loading from './Loading';
 import StoryFrame from './StoryFrame';
+import { FrameContext } from '../App'
 
 
 const Story = () => {
-    const [ frameNumber, setFrameNumber ] = useState(0);
-    const [ loading, setLoading ] = useState(true);
+    const [frameNumber] = useContext(FrameContext)
+    const [loading, setLoading] = useState(true);
     const [story, setStory ] = useState({ 
         loading: true,
         background: '',
@@ -16,6 +17,7 @@ const Story = () => {
         image: ''
      });
  
+    
     const getStoryData = async () => {
         const storyFrame = await storyData.frames[frameNumber];
         setLoading(false);
@@ -33,16 +35,16 @@ const Story = () => {
         getStoryData()
     }, [frameNumber]);
     
-    const { title, text, textColor, image, buttons } = story;
+    const { title, text, background, textColor, image, buttons } = story;
 
     const frame = story.loading ? <Loading /> 
         :   <StoryFrame 
                 title={title}
                 text={text}
+                background={background}
                 textColor={textColor}
                 image={image}
                 buttons={buttons}
-                frameNumber={frameNumber + 1}
             />;
 
     return (

@@ -1,7 +1,15 @@
 h1 {
   font-family: 'sans-black';
-  font-size: 3rem;
+  font-size: 3.74rem;
   letter-spacing: 6px;
+}
+
+b {
+  font-family: 'mono-black';
+}
+
+p {
+  margin-block-start: 0;
 }
 
 .main {
@@ -10,7 +18,11 @@ h1 {
   grid-template-rows: [main-start] 1fr [content-start] 75vh [content-end] 1fr [main-end];
 }
 
-.main::before {
+.main::before,
+.main::after,
+.story-frame::before,
+.story-frame::after
+ {
   content: '';
   width: 0; 
   padding-bottom: 100%;
@@ -18,17 +30,34 @@ h1 {
   grid-column: 1 / 1;
 } 
 
-.main::after {
-  content: '';
-  width: 0;
-  padding-bottom: 100%;
-  grid-row: 1 / 1;
-  grid-column: 1 / 1;
-}
-
-.content {
+.content,
+.story-frame__inner {
   grid-area: content;
   height: auto;
+}
+
+.story-frame__title {
+  margin: 0 0 5vw 0;
+  text-align: center;
+}
+
+.story-frame__content--text-only {
+  column-count: 2;
+}
+
+.story-frame__content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10% 0 10%;
+}
+
+.story-frame__image {
+  height: 318px;
+  width: 318px;
+  opacity: 0.5;
+  margin-left: 5%;
 }
 
 .content-loading {
@@ -42,20 +71,58 @@ h1 {
   text-align: center;
 }
 
-.content-story-frame {
+.story-frame {
   position: relative;
-  border: 16px solid; 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
+  border: 1rem solid; 
+  display: grid;
+  grid-template-columns: [main-start] 1fr [content-start] repeat(10, 1fr) [content-end] 1fr [main-end];
+  grid-template-rows: [main-start] 1fr [content-start] 45vw [content-end] 1fr [main-end];
 }
 
 .story-frame__number {
   position: absolute;
-  top: 0;
+  top: -6.75rem;
+  right: -1.9rem;
+  line-height: 1;
+  padding: 0 0 0 16px;
+  font-size: 6.25rem;
+}
+
+.story-frame__text {
+  font-family: 'mono-regular';
+  font-size: 0.8125rem;
+}
+
+.story-frame__content--text-image {
+  width: 40%;
+  margin-right: 5%;
+}
+
+.button__text {
+  position: absolute;
+  font-size: 3rem;
+  letter-spacing: 1px;
+  bottom: -4.5rem;
+  padding: 0 15px;
+  cursor: pointer;
+}
+
+.button__text--right {
   right: 0;
 }
+
+.button__text--left {
+  left: 0;
+}
+
+
+@media screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+  /* Styles */
+  }
+
+
+
+
 
 
 
