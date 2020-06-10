@@ -39,7 +39,7 @@ const StoryFrame = (props) => {
                         />
             } else {
                 return (
-                <>
+                <div className="button__row--mobile">
                     <Button
                         position="left"
                         text={buttons[0].text}
@@ -54,7 +54,7 @@ const StoryFrame = (props) => {
                         textColor={textColor}
                         linkIndex={buttons[1].linkindex}
                     />
-                </>
+                </div>
                 )
                 
             }

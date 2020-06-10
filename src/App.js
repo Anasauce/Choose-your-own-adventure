@@ -5,8 +5,8 @@ import Story from './components/Story';
 export const FrameContext = React.createContext(0);
 
 const App = () => {
-  let [frameNumber, setFrameNumber] = useState(0);
-
+  const [frameNumber, setFrameNumber] = useState(0);
+  
   return (
     <div className="App">
       <FrameContext.Provider value={[frameNumber, setFrameNumber]}>
