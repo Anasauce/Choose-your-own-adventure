@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { storyData } from '../data/storyData';
 import Loading from './Loading';
 import StoryFrame from './StoryFrame';
 import { FrameContext } from '../App'
@@ -17,9 +16,17 @@ const Story = () => {
         image: ''
      });
  
-    
     const getStoryData = async () => {
-        const storyFrame = await storyData.frames[frameNumber];
+        setLoading(true)
+        const response = await fetch("./data/storyData.json");
+        let data = await response.json()        
+        return data.frames;
+
+    }
+
+    const parseStoryData = async () => {
+        const storyData = await getStoryData();
+        const storyFrame = storyData[frameNumber];
         setLoading(false);
         setStory({
             background: storyFrame.colors.bg,
@@ -32,7 +39,7 @@ const Story = () => {
     };
 
     useEffect(() => {
-        getStoryData()
+        parseStoryData();
     }, [frameNumber]);
     
     const { title, text, background, textColor, image, buttons } = story;

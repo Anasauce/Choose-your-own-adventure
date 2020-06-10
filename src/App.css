@@ -114,19 +114,23 @@ p {
   left: 0;
 }
 
-@media screen and (max-device-width : 768px) and (min-device-width : 375px) {
+@media screen and (max-width : 768px) and (min-device-width : 375px) {
   .main {
+    display: flex;
+    flex-direction: column;
     min-height: 150vw;
   }
 }
 
-@media screen and (max-device-width : 7375) {
+@media screen and (max-width : 375px) {
   .main {
+    display: flex;
+    flex-direction: column;
     min-height: 200vw;
   }
 }
 
-@media screen and (max-device-width : 768px) {
+@media screen and (max-width : 768px) {
 
     .story-frame {
       display: flex;
